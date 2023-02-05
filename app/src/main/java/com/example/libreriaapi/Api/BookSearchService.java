@@ -1,0 +1,22 @@
+package com.example.libreriaapi.Api;
+
+import com.example.libreriaapi.Data.VolumesResponse;
+import com.example.libreriaapi.Data.Volume;
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
+
+public interface BookSearchService {
+    @GET("/books/v1/volumes")
+    Call<VolumesResponse> searchVolumes(
+            @Query("q") String query,
+            @Query("inauthor") String author,
+            @Query("startIndex") String startIndex
+    );
+
+    @GET("/books/v1/volumes/{id}")
+    Call<Volume> buscarPorId(
+            @Path("id") String id
+    );
+}
